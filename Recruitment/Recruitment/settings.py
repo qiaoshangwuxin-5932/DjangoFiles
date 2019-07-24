@@ -123,11 +123,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 # static
 STATIC_URL = '/static/'
-SECRET_ROOT = '/home/qiaoshangwuxin/photo/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Recruitment'),
+    ]
 
 
 
-# media
+# # media
 # MEDIA_URL = 'media/'
-# MEDIA_ROOT = '/home/qiaoshangwuxin/photo/'
+# MEDIA_ROOT = 'photo/'
 # MEDIA_DIR=os.path.join(BASE_DIR,'media')

@@ -16,10 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Game import views
+from django.views.decorators.csrf import csrf_exempt
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('onepage/',views.OnePage),
     path('secondpage/',views.SecondPage),
     path('thirdpage/',views.ThirdPage),
-    path('image/',views.image),
+    path('image/',csrf_exempt(views.ImageFiles.as_view()),name='提交图片'),
+    path('returnimage/', views.ReturnImage),
+
 ]
