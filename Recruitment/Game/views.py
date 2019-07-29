@@ -10,29 +10,34 @@ from django.utils.decorators import method_decorator
 import os
 from django.core.serializers import serialize
 
-
-class OnePage(View):
+class Username(View):
     # username
     def post(self,request,*args,**kwargs):
         username = request.POST.get('username')
         complete = RecruitmentNews.objects.filter(username=username)
         if not complete:
-            RecursionError.objects.create(username=username)
-            a = {'success': False}
+            RecruitmentNews.objects.create(username=username)
+            a = {'success': True,"status":1}
             return JsonResponse(a)
         else:
-            msg = "该名字已被占用"
+            msg = "用户已重复"
             return JsonResponse(
                 {
+                    "status":0,
                     "success":False,
                     "message":msg,
                 }
             )
-
-
 def SecondPage(request):
-    a = "第二个页面数据存放位置 "
-    return HttpResponse(a)
+    msg = "第二个页面数据存放位置 "
+    data = {
+        "status":1,
+        "message":msg,
+    }
+    return HttpResponse(data)
+
+def FivePage(request):
+    pass
 
 
 @csrf_exempt
@@ -53,14 +58,20 @@ class ImageFiles(View):
             print(photo.name)
             print(photo.size)
             f =open(photo.name,'wb')
-            for chunk in photo.chunks():
+            for chunk in photo.chunks():  #对图片进行分块
                 f.write(chunk)
-            f.close()
+            f.close()   # 关闭
             RecruitmentNews.objects.create(username=username,photo=photo)
             return HttpResponse('dwad')
 #  返回图片
 def ReturnImage(request):
+
     d = os.path.dirname(__file__)
     image = os.path.join(d,"photo/image/Paper_Architecture_by_Dmitri_Popov.jpg")
-    data = open(image,'rb').read()
+    data = open(image,'rb').read()     # 读取图片
     return HttpResponse(data,content_type='image/png')
+
+
+
+def data():
+    pass

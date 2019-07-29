@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'es-xxs^vo&uvo)42_8^4)_1_v46n$_j)@5f&v&%bnk7sh5^z1h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 1
 
 ALLOWED_HOSTS = []
 
@@ -124,7 +124,7 @@ USE_TZ = False
 # static
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Recruitment'),
+    os.path.join(BASE_DIR, '/photo'),
     ]
 
 

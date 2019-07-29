@@ -1,0 +1,17 @@
+<!-- 若以socket方式访问 -->
+<!--<uwsgi>-->
+<!--    <socket>:8077</socket>-->
+<!--    <chdir>/home/qiaoshangwuxin/Desktop/Recruitment </chdir>-->
+<!--    <module>wsgi</module>-->
+<!--    <processes>4</processes> &lt;!&ndash; 进程数 &ndash;&gt;-->
+<!--    <daemonize>uwsgi.log</daemonize>-->
+<!--</uwsgi>-->
+
+<!-- 若以http方式访问 -->
+<uwsgi>
+    <http>:8000</http>
+    <chdir>/home/qiaoshangwuxin/Desktop/Recruitment</chdir>
+    <module>wsgi</module>
+    <processes>4</processes> <!-- 进程数 -->
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>

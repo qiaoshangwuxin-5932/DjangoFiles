@@ -21,7 +21,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('onepage/',views.OnePage),
+    path('onepage/',csrf_exempt(views.Username.as_view()),name='用户名称'),
     path('secondpage/',views.SecondPage),
     path('thirdpage/',views.ThirdPage),
     path('image/',csrf_exempt(views.ImageFiles.as_view()),name='提交图片'),
